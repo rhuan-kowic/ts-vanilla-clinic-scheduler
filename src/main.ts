@@ -1,35 +1,39 @@
+import "./styles.css";
+
 import { Repository } from "./core/Repository";
 import type { Cliente } from "./domain/Cliente";
 import type { Agendamento } from "./domain/Agendamento";
+import { ClienteList } from "./components/ClienteList";
 
 const clienteRepo = new Repository<Cliente>("clientes");
-const agendaRepo = new Repository<Agendamento>("agendamentos");
 
-const gerarId = () => Math.random().toString(36).substr(2, 9);
+const clienteListComponent = new ClienteList("cliente-list-app");
 
-// --- TESTE CLIENTES ---
-console.log("--- 👩 TESTE DE CLIENTES ---");
+function atualizarTela() {
+  const dados = clienteRepo.getAll();
+  clienteListComponent.render(dados);
+}
 
-const cliente1: Cliente = {
-  id: gerarId(),
-  nome: "Ana Silva",
-  telefone: "3199999999",
-  email: "ana@email.com",
-  dataCadastro: new Date()
-};
 
-clienteRepo.add(cliente1);
-console.log("Todos os clientes:", clienteRepo.getAll());
+const form = document.getElementById("form-cliente") as HTMLFormElement;
+const inputNome = document.getElementById("nome") as HTMLInputElement;
+const inputTel = document.getElementById("telefone") as HTMLInputElement;
+const inputEmail = document.getElementById("email") as HTMLInputElement;
 
-// --- TESTE AGENDAMENTO ---
-console.log("\n--- 📅 TESTE DE AGENDAMENTOS ---");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-const agendamento1: Agendamento = {
-  id: gerarId(),
-  clienteId: cliente1.id,
-  servico: "Limpeza de Pele",
-  dataHora: new Date("2026-01-20T14:00:00"),
-};
+  const novoCliente: Cliente = {
+    id: crypto.randomUUID(), 
+    nome: inputNome.value,
+    telefone: inputTel.value,
+    email: inputEmail.value,
+    dataCadastro: new Date()
+  };
+  
+  clienteRepo.add(novoCliente);
+  atualizarTela();
+  form.reset();
+});
 
-agendaRepo.add(agendamento1);
-console.log("Agenda completa:", agendaRepo.getAll());
+atualizarTela();
