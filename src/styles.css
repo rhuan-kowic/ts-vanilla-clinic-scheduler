@@ -1,0 +1,91 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+input,
+button {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.cliente-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column; 
+  gap: 4px;
+  transition: transform 0.2s;
+}
+
+.cliente-card:hover {
+  transform: translateY(-2px);
+  border-color: #2563eb;
+}
+
+.cliente-card .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.cliente-card strong {
+  color: #1f2937;
+}
+
+.cliente-card span {
+  color: #4b5563;
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.cliente-card small {
+  font-size: 0.65rem;
+  color: #9ca3af;
+  align-self: flex-end; 
+  font-family: monospace;
+}
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+}
