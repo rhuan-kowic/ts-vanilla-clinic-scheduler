@@ -10,29 +10,48 @@
     <div id="app">
       <header>
         <h1>Clinic Scheduler</h1>
+        <nav>
+          <a href="#clientes">Clientes</a>
+          <a href="#agenda">Agenda</a>
+        </nav>
       </header>
 
       <main class="container">
-        <section class="container">
-          <section class="panel">
-            <h2>Novo Cliente</h2>
-            <form id="form-cliente">
-              <input
-                type="text"
-                placeholder="Nome Completo"
-                id="nome"
-                required
-              />
-              <input type="tel" id="telefone" placeholder="Telefone" required />
-              <input type="email" id="email" placeholder="Email" required />
-              <button type="submit">Salvar Cliente</button>
-            </form>
+        <div class="view" id="view-clientes">
+          <section class="container">
+            <section class="panel">
+              <h2>Novo Cliente</h2>
+              <form id="form-cliente">
+                <input
+                  type="text"
+                  placeholder="Nome Completo"
+                  id="nome"
+                  required
+                />
+                <input
+                  type="tel"
+                  id="telefone"
+                  placeholder="Telefone"
+                  required
+                />
+                <input type="email" id="email" placeholder="Email" required />
+                <button type="submit">Salvar Cliente</button>
+              </form>
+            </section>
+            <section class="panel">
+              <h2>Clientes Cadastrados</h2>
+              <div id="cliente-list-app"></div>
+            </section>
           </section>
+        </div>
+
+        <div class="view hidden" id="view-agenda">
           <section class="panel">
-            <h2>Clientes Cadastrados</h2>
-            <div id="cliente-list-app"></div>
+            <h2>Agenda de Hoje</h2>
+            <p>Em construção...</p>
+            <div id="agenda-list-app"></div>
           </section>
-        </section>
+        </div>
       </main>
     </div>
 
